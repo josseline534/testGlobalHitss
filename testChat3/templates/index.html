@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat en tiempo real</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+      body{
+        background-color: rgb(204, 204, 204);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #connection {
+        width: 80%;
+        padding: 2rem;
+        border: 1px solid rgb(165, 165, 165);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: rgb(231, 231, 231);
+      }
+
+      #connection label {
+        font-size: x-large;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      input {
+        border: 1px solid rgb(165, 165, 165);
+        font-size: 16px;
+        border-radius: 20px;
+        padding: 1rem;
+      }
+
+      #connection #nameUser {
+        width: 96%;
+        margin-bottom: 1rem;
+      }
+
+      button {
+        width: 20%;
+        padding: 1rem;
+        font-size: medium;
+        font-style: italic;
+        border-radius: 20px;
+      }
+
+      .containerButton{
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+      }
+
+      #chat {
+        border: 1px solid rgb(165, 165, 165);
+        border-radius: 20px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #chat .composer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      #chat .composer #input {
+        width: 90%;
+      }
+
+      #chat .composer button {
+        width: 5%;
+      }
+
+      #chat ul li {
+        list-style: none;
+      }
+
+      li .containerMessage {
+        display: flex;
+      }
+
+      img {
+        width: 60px;
+        height: 60px;
+        margin-right: 1rem;
+      }
+
+      em {
+        font-weight: bold;
+      }
+
+      #chat ul li .containerMessage .message p{
+        text-align: start;
+      }
+
+      #closeSession {
+        padding-right: 9rem;
+      }
+
+    </style>
+</head>
+<body>
+    <h1>Chat en tiempo real</h1>
+
+    <div id="connection">
+      <label for="nameUser">Nombre de Usuario</label>
+      <input id="nameUser" autocomplete="off" />
+      <div class="containerButton">
+        <button onclick="newConnection()">Ingresar</button>
+      </div>
+    </div>
+    <div id="chat">
+      <ul id="messages"></ul>
+      <div class="composer">
+        <input id="input" autocomplete="off" />
+        <button onclick="sendMessage()">>></button>
+      </div>
+    </div>
+    <p id="userCount">Usuarios conectados: 0</p>
+
+    <div id="closeSession" class="containerButton" >
+      <button onclick="closeSession()">Salir</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
