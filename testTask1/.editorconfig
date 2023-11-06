@@ -1,0 +1,15 @@
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+# Matches multiple files with different extensions
+[*.{js,jsx,ts,tsx,json}]
+quote_type = single
+charset = utf-8
+indent_style = space
+indent_size = 2
+trim_trailing_comma = false
